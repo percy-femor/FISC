@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>The Scent Podium | Perfume Gallery</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+  <link href="css/responsive.css" rel="stylesheet" />
+  <style>
+    :root{--brand-dark:#063547;--brand-accent:#44b89d;--brand-light:#eaf7f3}
+
+    .catagory_section{background:linear-gradient(180deg,#f5f6f9 0%, var(--brand-light) 100%)}
+    .heading_container h2{color:var(--brand-dark);letter-spacing:.5px}
+    .heading_container p{max-width:780px;margin:0 auto;color:#244657}
+
+    .box.product-card{cursor:pointer;transition:transform .25s ease, box-shadow .25s ease}
+    .box.product-card:hover{transform:translateY(-6px);box-shadow:0 12px 24px rgba(6,53,71,.15)}
+    .box .img-box{overflow:hidden;border-radius:12px;aspect-ratio:1/1}
+    .box .img-box img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+    .box.product-card:hover .img-box img{transform:scale(1.06)}
+    .box .detail-box h5{color:var(--brand-dark)}
+    .box .detail-box p{color:#335e6c}
+
+    /* Staggered entrance */
+    .product-card{opacity:0;transform:translateY(20px);will-change:transform,opacity}
+    .product-card.appear{animation:floatIn .6s ease forwards}
+    .product-card:nth-child(1).appear{animation-delay:.05s}
+    .product-card:nth-child(2).appear{animation-delay:.1s}
+    .product-card:nth-child(3).appear{animation-delay:.15s}
+    .product-card:nth-child(4).appear{animation-delay:.2s}
+    .product-card:nth-child(5).appear{animation-delay:.25s}
+    .product-card:nth-child(6).appear{animation-delay:.3s}
+    @keyframes floatIn{to{opacity:1;transform:translateY(0)}}
+
+    /* Modal */
+    .product-modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:2000}
+    .product-modal.show{display:flex}
+    .product-modal .modal-content{background:#fff;max-width:900px;width:min(900px,92%);border-radius:12px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,.25)}
+    .modal-header{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid #eee;background:linear-gradient(90deg,var(--brand-dark),#0a4b60);color:#fff}
+    .modal-header h3{margin:0}
+    .modal-close{background:transparent;border:none;font-size:1.75rem;line-height:1;cursor:pointer;color:#fff}
+    .modal-body{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding:1rem 1.25rem 1.25rem}
+    .modal-body img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px}
+    .modal-body .details p{margin-bottom:.5rem;color:#244657}
+    .modal-footer{padding:1rem 1.25rem;border-top:1px solid #eee;display:flex;justify-content:flex-end;background:#fafafa}
+    .modal-footer .btn{background-color:var(--brand-accent);color:#fff}
+
+    /* Utility & responsive */
+    @media (max-width: 992px){.modal-body{grid-template-columns:1fr}}
+    @media (max-width: 576px){
+      .heading_container h2{font-size:clamp(1.5rem,4vw,2rem)}
+      .heading_container p{font-size:.95rem}
+      .product-modal .modal-content{width:94%}
+    }
+  </style>
+</head>
+<body class="sub_page">
+  <div class="hero_area">
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <span>
+              <img src="images/logo.jpg" alt="Francksfurt Infotech &  Solutions Center" class="my-image">
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link pl-lg-0" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html"> About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="categories.html">Categories</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"> Blog </a>
+              </li>
+            </ul>
+            <from class="search_form">
+              <input type="text" class="form-control" placeholder="Search here...">
+              <button class="" type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+            </from>
+          </div>
+        </nav>
+      </div>
+    </header>
+  </div>
+
+  <section class="catagory_section layout_padding">
+    <div class="catagory_container">
+      <div class="container ">
+        <div class="heading_container heading_center">
+          <h2>Perfume Gallery</h2>
+          <p>Explore curated fragrances. Click a product to view details.</p>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-md-4 ">
+            <div class="box product-card" data-name="Royal Oud" data-img="images/b1.jpg" data-desc="Warm oud balanced with spice and amber for an opulent trail." data-price="GH₵ 550">
+              <div class="img-box">
+                <img src="images/b1.jpg" alt="Royal Oud">
+              </div>
+              <div class="detail-box">
+                <h5>Royal Oud</h5>
+                <p>Warm oud with spice and amber.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 ">
+            <div class="box product-card" data-name="Citrus Bloom" data-img="images/b2.jpg" data-desc="Sparkling citrus with floral heart, perfect for daytime freshness." data-price="GH₵ 320">
+              <div class="img-box">
+                <img src="images/b2.jpg" alt="Citrus Bloom">
+              </div>
+              <div class="detail-box">
+                <h5>Citrus Bloom</h5>
+                <p>Bright citrus and soft florals.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 ">
+            <div class="box product-card" data-name="Velvet Noir" data-img="images/c1.jpg" data-desc="Dark vanilla, cocoa and musk for a luxurious evening aura." data-price="GH₵ 480">
+              <div class="img-box">
+                <img src="images/c1.jpg" alt="Velvet Noir">
+              </div>
+              <div class="detail-box">
+                <h5>Velvet Noir</h5>
+                <p>Gourmand notes with deep warmth.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 ">
+            <div class="box product-card" data-name="Azure Mist" data-img="images/c2.jpg" data-desc="Aquatic notes with a crisp breeze and hint of citrus." data-price="GH₵ 290">
+              <div class="img-box">
+                <img src="images/c2.jpg" alt="Azure Mist">
+              </div>
+              <div class="detail-box">
+                <h5>Azure Mist</h5>
+                <p>Fresh aquatic with crisp citrus.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 ">
+            <div class="box product-card" data-name="Amber Spice" data-img="images/c3.jpg" data-desc="Radiant amber with cinnamon and cardamom accents." data-price="GH₵ 410">
+              <div class="img-box">
+                <img src="images/c3.jpg" alt="Amber Spice">
+              </div>
+              <div class="detail-box">
+                <h5>Amber Spice</h5>
+                <p>Amber warmed with spice notes.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 ">
+            <div class="box product-card" data-name="Floral Whisper" data-img="images/about-img.png" data-desc="Soft peony and jasmine with a clean musk finish." data-price="GH₵ 350">
+              <div class="img-box">
+                <img src="images/about-img.png" alt="Floral Whisper">
+              </div>
+              <div class="detail-box">
+                <h5>Floral Whisper</h5>
+                <p>Gentle florals with clean musk.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="productModal" class="product-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle"></h3>
+        <button class="modal-close" id="modalClose">&times;</button>
+      </div>
+      <div class="modal-body">
+        <img id="modalImage" src="" alt="">
+        <div class="details">
+          <p id="modalDesc"></p>
+          <p id="modalPrice"></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a id="buyBtn" class="btn" href="#contact">Contact to Buy</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer_section">
+    <div class="container">
+      <p>&copy; <span id="displayYear"></span> All Rights Reserved By Franksfurt Group</p>
+    </div>
+  </footer>
+
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/custom.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',function(){
+      var cards=document.querySelectorAll('.product-card');
+      var modal=document.getElementById('productModal');
+      var title=document.getElementById('modalTitle');
+      var img=document.getElementById('modalImage');
+      var desc=document.getElementById('modalDesc');
+      var price=document.getElementById('modalPrice');
+      var close=document.getElementById('modalClose');
+      var buyBtn=document.getElementById('buyBtn');
+      /* entrance animation on scroll */
+      var io=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('appear');io.unobserve(e.target);}});
+      },{threshold:.15});
+      cards.forEach(function(c){io.observe(c)});
+      cards.forEach(function(card){
+        card.addEventListener('click',function(){
+          title.textContent=card.dataset.name||'';
+          img.src=card.dataset.img||'';
+          img.alt=card.dataset.name||'';
+          desc.textContent=card.dataset.desc||'';
+          price.textContent=card.dataset.price?('Price: '+card.dataset.price):'';
+          buyBtn.href='#contact';
+          modal.classList.add('show');
+        });
+      });
+      function hide(){modal.classList.remove('show');}
+      close.addEventListener('click',hide);
+      modal.addEventListener('click',function(e){if(e.target===modal)hide();});
+    });
+  </script>
+</body>
+</html>
